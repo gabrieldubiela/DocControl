@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 const documentRoutes = require('./routes/documents');
+const modelRoutes = require('./routes/models');
+const signatureRoutes = require('./routes/signatures');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 // Rotas
 app.use('/api/auth', authRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/models', modelRoutes);
+app.use('/api/signatures', signatureRoutes);
 
 // Rota de verificação de saúde
 app.get('/health', (req, res) => {
