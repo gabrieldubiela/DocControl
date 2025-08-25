@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api',
+  baseURL: process.env.NODE_ENV === 'production' 
+    ? '/api'  // Em produção, usa o mesmo domínio
+    : (process.env.REACT_APP_API_URL || 'http://localhost:3001/api'),
 });
 
 // Interceptor para adicionar o token JWT em todas as requisições
